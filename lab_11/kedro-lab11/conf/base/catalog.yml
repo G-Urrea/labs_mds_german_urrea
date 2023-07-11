@@ -28,3 +28,30 @@ model_input:
   filepath: ./data/03_primary/model_input.parquet
 
 
+x_train:
+  type: pandas.ParquetDataSet
+  filepath: ./data/05_model_input/x_train.parquet
+
+x_val:
+  type: pandas.ParquetDataSet
+  filepath: ./data/05_model_input/x_val.parquet
+
+x_test:
+   type: pandas.ParquetDataSet
+   filepath: ./data/05_model_input/x_test.parquet
+
+y_train:
+  type: pandas.ParquetDataSet
+  filepath: ./data/05_model_input/y_train.parquet
+
+y_val:
+  type: pandas.ParquetDataSet
+  filepath: ./data/05_model_input/y_val.parquet
+
+y_test:
+  type: pandas.ParquetDataSet
+  filepath: ./data/05_model_input/y_test.parquet
+
+best_model:
+  type: pickle.PickleDataSet
+  filepath: ./data/06_models/best_model.pkl

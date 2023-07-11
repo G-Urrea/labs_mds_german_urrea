@@ -20,13 +20,19 @@ def _parse_money(x: pd.Series) -> pd.Series:
     x = x.astype(float)
     return x
 
+
 def get_data():
-    
-    df_companies = pd.read_csv('https://github.com/MDS7202/lab_11/raw/main/companies.csv')
-    df_reviews = pd.read_csv('https://github.com/MDS7202/lab_11/raw/main/reviews.csv')
-    df_shuttles = pd.read_excel('https://github.com/MDS7202/lab_11/raw/main/shuttles.xlsx', sheet_name='Sheet1')
+
+    df_companies = pd.read_csv(
+        "https://github.com/MDS7202/lab_11/raw/main/companies.csv"
+    )
+    df_reviews = pd.read_csv("https://github.com/MDS7202/lab_11/raw/main/reviews.csv")
+    df_shuttles = pd.read_excel(
+        "https://github.com/MDS7202/lab_11/raw/main/shuttles.xlsx", sheet_name="Sheet1"
+    )
 
     return df_companies, df_shuttles, df_reviews
+
 
 def preprocess_companies(companies: pd.DataFrame) -> pd.DataFrame:
     """Preprocesses the data for companies.

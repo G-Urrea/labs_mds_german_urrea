@@ -4,13 +4,21 @@ generated using Kedro 0.18.11
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
-from .nodes import get_data, preprocess_companies, preprocess_shuttles, create_model_input_table
+
+from .nodes import (
+    create_model_input_table,
+    get_data,
+    preprocess_companies,
+    preprocess_shuttles,
+)
+
 
 def create_pipeline(**kwargs) -> Pipeline:
-    return pipeline([
+    return pipeline(
+        [
             node(
                 func=get_data,
-                inputs = None,
+                inputs=None,
                 outputs=["companies", "shuttles", "reviews"],
                 name="get_data",
             ),
@@ -21,16 +29,16 @@ def create_pipeline(**kwargs) -> Pipeline:
                 name="preprocess_companies",
             ),
             node(
-                func = preprocess_shuttles,
-                inputs = "shuttles",
-                outputs = "shuttles_preprocessed",
-                name = "preprocess_shuttles"
+                func=preprocess_shuttles,
+                inputs="shuttles",
+                outputs="shuttles_preprocessed",
+                name="preprocess_shuttles",
             ),
             node(
-                func = create_model_input_table,
-                inputs = ["shuttles_preprocessed", "companies_preprocessed", "reviews"],
-                outputs = "model_input",
-                name = "create_model_input_table"
-            )
+                func=create_model_input_table,
+                inputs=["shuttles_preprocessed", "companies_preprocessed", "reviews"],
+                outputs="model_input",
+                name="create_model_input_table",
+            ),
         ]
-        )
+    )
